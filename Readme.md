@@ -14,4 +14,37 @@ The following component diagram depicts the current architecture of this sample 
 2. Django 4.2.1
 3. Django REST Framework 3.14.0
 
-## Running the application
+## Run the application
+
+1. Clone the repository.
+```sh
+git clone https://github.com/ayeshLK/basketball-league-management
+
+cd basketball-league-management/
+```
+
+2. Create a virtual environment to run the application.
+```sh
+python3 -m venv env
+
+source env/bin/activate
+```
+
+3. Install the required dependencies.
+```sh
+pip install -r requirements.txt
+```
+
+4. Go into the project directory and run the required migrations.
+```sh
+cd basketball_league/
+
+python manage.py makemigrations management
+
+python manage.py migrate
+```
+
+5. Run the server using following command.
+```sh
+python manage.py runserver
+```

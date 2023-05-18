@@ -39,12 +39,10 @@ pip install -r requirements.txt
 ```sh
 cd basketball_league/
 
-python manage.py makemigrations management
-
 python manage.py migrate
 ```
 
-5. Run the server using following command.
+5. Run the server using the following command.
 ```sh
 python manage.py runserver
 ```

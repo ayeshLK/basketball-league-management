@@ -18,16 +18,22 @@ class SiteUsage(models.Model):
 
 class Coach(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    class Meta:
+        ordering = ['name']
 
 class Team(models.Model):
     name = models.CharField(max_length=100)
     coach = models.OneToOneField(Coach, on_delete=models.CASCADE)
+    class Meta:
+        ordering = ['name']
 
 class Player(models.Model):
     name = models.CharField(max_length=100)
     height = models.PositiveBigIntegerField()
     average_score = models.DecimalField(max_digits=5, decimal_places=2)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="players")
+    class Meta:
+        ordering = ['name']
 
 class Game(models.Model):
     venue = models.CharField(max_length=100)

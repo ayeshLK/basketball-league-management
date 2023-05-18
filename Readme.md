@@ -46,3 +46,7 @@ python manage.py migrate
 ```sh
 python manage.py runserver
 ```
+
+## Accessing the API
+
+The API has been developed with in-built support for browsability. Go to `http://127.0.0.1:8000/` in your browser. In the API root, all the available APIs will be listed and you can browse through the APIs by clicking on the relevant URLs.

@@ -1,3 +1,4 @@
 django==4.2.1
 djangorestframework==3.14.0
 drf-nested-routers==0.93.4
+numpy==1.24.3

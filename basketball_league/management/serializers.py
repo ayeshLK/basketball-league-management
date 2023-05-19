@@ -1,7 +1,12 @@
 from django.contrib.auth.models import User
 from rest_framework.serializers import HyperlinkedModelSerializer, HyperlinkedIdentityField
 from rest_framework_nested.serializers import NestedHyperlinkedModelSerializer
-from management.models import Team, Coach, Player
+from management.models import Game, Team, Coach, Player
+
+class GameSerializer(HyperlinkedModelSerializer):
+    class Meta:
+        model = Game
+        fields = ['id', 'date', 'venue', 'home_team', 'away_team']
 
 class CoachSerializer(HyperlinkedModelSerializer):
     class Meta:
@@ -20,3 +25,4 @@ class PlayerSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Player
         fields = ['id', 'name', 'height', 'average_score']
+

@@ -4,7 +4,11 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from management.models import Coach, Team, Player, Game
-from management.serializers import CoachSerializer, TeamSerializer, PlayerSerializer
+from management.serializers import GameSerializer, CoachSerializer, TeamSerializer, PlayerSerializer
+
+class GameViewSet(viewsets.ModelViewSet):
+    serializer_class = GameSerializer
+    queryset = Game.objects.all()
 
 class CoachViewSet(viewsets.ModelViewSet):
     """
@@ -41,4 +45,4 @@ class PlayerViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         team = Team.objects.get(pk=self.kwargs['team_pk'])
-        serializer.save(team=team)        
+        serializer.save(team=team)    

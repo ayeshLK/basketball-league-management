@@ -11,9 +11,10 @@ class CoachSerializer(HyperlinkedModelSerializer):
 
 class TeamSerializer(HyperlinkedModelSerializer):
     players = HyperlinkedIdentityField(view_name='player-list', lookup_url_kwarg='team_pk')
+    players_avg_over_90 = HyperlinkedIdentityField(view_name="team-percentile90")
     class Meta:
         model = Team
-        fields = ['url', 'id', 'name', 'coach', 'players']
+        fields = ['url', 'id', 'name', 'coach', 'players', 'players_avg_over_90']
 
 class PlayerSerializer(HyperlinkedModelSerializer):
     class Meta:

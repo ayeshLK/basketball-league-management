@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models import Avg, Q
+from decimal import Decimal
 
 USER_TYPES = (
     ('admin', 'Admin'),
@@ -26,6 +28,12 @@ class Team(models.Model):
     coach = models.OneToOneField(Coach, on_delete=models.CASCADE)
     class Meta:
         ordering = ['name']
+    
+    def players_in_90th_percentile(self):
+        percentile_90 = self.players.aggregate(
+            percentile=Avg('average_score', filter=Q(average_score__isnull=False))
+        )['percentile'] * Decimal('0.9')
+        return self.players.filter(average_score__gte=percentile_90)
 
 class Player(models.Model):
     name = models.CharField(max_length=100)
